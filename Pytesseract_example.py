@@ -55,11 +55,12 @@ def take_image(current_page, xref, pl,target_word):
 
     text = pytesseract.image_to_string(image, config='--psm 6 -c tessedit_char_whitelist=0123456789,. ')
     #text = pytesseract.image_to_string(image, config='--psm 6 -c tessedit_char_whitelist=0123456789,. ').split('\n')
-    print(text)
+    #print(text)
 
     # получить все вхождения нужного слова
-    #word_occurences = [i for i, word in enumerate(data["text"]) if word.lower() == target_word]
-    word_occurences = [i for i, word in enumerate(text) if word.lower() == target_word]
+    word_occurences = [i for i, word in enumerate(data["text"]) if word == target_word] #word.lower()== target_word
+    # Распознаем числа
+    #word_occurences = [i for i, word in enumerate(text) if word.lower() == target_word]
     # Теперь нарисуем вокруг найденного слова рамку
     for occ in word_occurences:
         # извлекаем ширину, высоту, верхнюю и левую позицию для обнаруженного слова
@@ -87,20 +88,23 @@ def take_image(current_page, xref, pl,target_word):
 
 
 #Пытаемся взять данные с чертежа
-print('****************')
-word ="3"
-print('Берем слово %s' % (word))
-take_image(1, 1, 1,word)
+if (1==0):
+    print('****************')
+    word ="3"
+    print('Берем слово %s' % (word))
+    take_image(1, 1, 1,word)
 
 pdf_document = fitz.open("pdf\\PDFOfImage.pdf")
+index = 0
 for current_page in range(len(pdf_document)):
     # for image in pdf_document.getPageImageList(current_page):
     for image in pdf_document.get_page_images(current_page):
-
-        xref = image[0]
-        pix = fitz.Pixmap(pdf_document, xref)
-        print('****************')
-        print('Страница %s' % (current_page))
-        # читать изображение с помощью OpenCV
-        take_image(current_page, xref, 0,"по")
+        if (index == 2):
+            xref = image[0]
+            pix = fitz.Pixmap(pdf_document, xref)
+            print('****************')
+            print('Страница %s' % (current_page))
+            # читать изображение с помощью OpenCV
+            take_image(current_page, xref, 0,"НИР")
+        index+=1
 
