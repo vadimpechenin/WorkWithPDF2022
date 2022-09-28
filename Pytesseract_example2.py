@@ -1,24 +1,5 @@
 #Использование pytesseract для распознавания текста и цифр с картинок
-#https://waksoft.susu.ru/2021/05/18/kak-s-pomoshhyu-python-raspoznat-tekst-v-izobrazheniyah/
-
-#pip install pytesseract
-
-#1. Install tesseract using windows installer available at: https://github.com/UB-Mannheim/tesseract/wiki
-
-#2. Note the tesseract path from the installation. Default installation path at the time of this edit was: C:\Users\USER\AppData\Local\Tesseract-OCR. It may change so please check the installation path.
-
-#3. pip install pytesseract
-
-#4. Set the tesseract path in the script before calling image_to_string:
-
-#pytesseract.pytesseract.tesseract_cmd = r'C:\Users\USER\AppData\Local\Tesseract-OCR\tesseract.exe' fdg
-
-#Удивительно, не правда ли? И это еще не все!
-# Вы можете передать параметр lang функциям image_to_string()
-# или image_to_data(), чтобы упростить распознавание текста на других языках,
-# а не только на английском. Можно использовать функцию image_to_boxes(),
-# которая распознает символы и границы их местоположения, пожалуйста,
-# обратитесь к официальной документации и доступным языкам для получения дополнительной информации.
+#Чисто чертежи
 
 import pytesseract
 import cv2
@@ -116,6 +97,6 @@ elif (pl==0):
     word ="после"
     word_number= "4"
 print('Берем слово %s' % (word))
-take_image(1, 1, 0, word, word_number)
+take_image(1, 1, pl, word, word_number)
 
 
