@@ -5,7 +5,8 @@ pip install PyMuPDF
 """
 import fitz
 
-pdf_document = fitz.open("pdf\\PDFOfImage.pdf")
+#pdf_document = fitz.open("pdf\\PDFOfImage.pdf")
+pdf_document = fitz.open("pdf\\slaids.pdf")
 for current_page in range(len(pdf_document)):
    #for image in pdf_document.getPageImageList(current_page):
     for image in pdf_document.get_page_images(current_page):

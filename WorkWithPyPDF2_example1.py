@@ -19,5 +19,6 @@ def get_pdf_info(path):
 if __name__ == '__main__':
     #чтение pdf с четким текстом
     get_pdf_info('pdf\\PDFWithWords.pdf')
+    #get_pdf_info('pdf\\slaids.pdf')
     #чтение pdf с нечетким текстом
     get_pdf_info('pdf\\PDFOfImage.pdf')
