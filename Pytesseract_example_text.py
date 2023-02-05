@@ -51,8 +51,10 @@ if (1==0):
     take_image(1, 1, 1,word)
 
 pdf_document = fitz.open("pdf\\slaids.pdf")
+#pdf_document = fitz.open("pdf\\Text_handwritten.pdf")
 index = 0
 mydoc = docx.Document()
+print(len(pdf_document))
 for current_page in range(len(pdf_document)):
     # for image in pdf_document.getPageImageList(current_page):
     for image in pdf_document.get_page_images(current_page):
@@ -64,5 +66,6 @@ for current_page in range(len(pdf_document)):
         # читать изображение с помощью OpenCV
         take_image(current_page, xref, 0,mydoc)
         index+=1
-mydoc.save("pdf\\slaids.docx")
 
+#mydoc.save("pdf\\Text_handwritten.docx")
+mydoc.save("pdf\\slaids.docx")
